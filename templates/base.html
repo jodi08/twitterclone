@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <title>TwitterClone</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border: 1px dashed black">
   <a class="navbar-brand" href="#">TwitterClone</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -15,16 +16,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link btn btn-sm btn-primary" style="color: black;" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/userprofile/">User Profile</a>
+        <a class="nav-link btn btn-sm btn-success" href="/userprofile/" style="margin-left: 15px; color: black;">User Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/tweet/">Tweet</a>
+        <a class="nav-link btn btn-sm btn-warning" style="margin-left: 15px; color: black;" href="/tweet/">Tweet</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Disabled</a>
+        <a class="nav-link btn btn-sm btn-danger" style="margin-left: 15px; color: black;" href="/notification/">Notifications {{notification_count}}</a>
       </li>
     </ul>
   </div>

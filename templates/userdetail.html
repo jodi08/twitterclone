@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1 style="display: flex; justify-content: center;">{{request.user.username}}'s Profile Page</h1>
+
+    <div class="card" style="width: 18rem; border: 1px solid black; margin-left: 15px;">
+        <div class="card-body">
+            <h5 class="card-title">{{request.user}}</h5>
+            <h5>Tweets: {{ tweet_count }}</h5>
+            <h5>Following: {{ request.user.followers.count }} </h5>
+            <a href="/logout/" class="btn btn-primary">Logout</a>
+    </div>  
+  </div>
+  <div class="container">
+        
+        {% for post in tweets %}
+  
+            
+            <p><a href="/tweet_detail/{{ post.id }}/"><p>{{ post.tweet}}</p></a></p>
+            <p><a href="/userdetail/{{post.author.id}}/">{{post.author}}</a></p>
+            <p>{{post.timestamp}}</p>
+            <hr style="border: 1px dashed black;"
+        {% endfor %}
+        <h5>Followers: </h5>
+        {% if tweeter in following %}
+        <a href="/unfollow/{{tweeter.id}}" class="btn btn-small btn-primary btn-danger">Unfollow</button>
+        {% else %}
+         <a href="/follow/{{tweeter.id}}" class="btn btn-small btn-primary">Follow</button>
+        {% endif %}
+        <a href="logout" class="btn btn-sml btn-primary" style="margin: 10px;">Logout</a>
+{% endblock %}
+
+</div>

@@ -1,6 +1,33 @@
 {% extends 'base.html' %}
+
 {% block content %}
+<div>
+<h1 style="display: flex; justify-content: center;">TwitterClone</h1>
 
-<h1>Welcome to TwitterClone!</h1>
 
+<h3>Welcome, {{ request.user }}!</h3>
+
+<div class="card bg-light" style="width: 18rem; border: 1px solid black; margin-left: 15px;">
+    <div class="card-body">
+        <h5 class="card-title">{{request.user}}</h5>
+        <h5>Tweets: {{ tweet_count }}</h5>
+        <h5>Following: {{ request.user.followers.count }} </h5>
+        
+    </div>
+        <a href="/logout/" class="btn btn-primary" style="color: black;">Logout</a>
+        
+  </div>
+</div>
+<div class="container" style="margin-left: 15px; style="margin-left: 15px;"">
+<p>Current Feed: </p>
+
+{% for post in tweets %}
+{% if post.author in request.user.followers.all or post.author == request.user%}
+    <p style="margin-left: 15px;"><a href="/tweet_detail/{{ post.id }}/">{{post.tweet }}</a></p>
+    <p style="margin-left: 15px;"><a href="/userdetail/{{post.author.id}}/">{{post.author}}</a></p>
+    <p style="margin-left: 15px;">{{post.timestamp}}</p>
+    <hr style="border: 1px dashed black;">
+</div>
+{% endif %}
+{% endfor %}
 {% endblock %}

@@ -19,5 +19,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    path('notification/', views.notification_view, name="notification")
     #path('admin/', admin.site.urls),
 ]

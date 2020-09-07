@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Notifications</h3>
+<div>
+{{noti_count}}
+{% for category in new_notifications %}
+
+<p>Message: {{category}}
+</p>
+{% endfor %}
+</div>
+{% endblock %}
+

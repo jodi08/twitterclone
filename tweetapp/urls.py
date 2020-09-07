@@ -20,4 +20,5 @@ from . import views
 
 urlpatterns = [
     path('tweet/', views.tweet_view, name='tweet'),
+    path('tweet_detail/<int:tweet_id>/', views.tweet_detail),
 ]

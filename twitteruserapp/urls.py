@@ -22,4 +22,7 @@ urlpatterns = [
     path('', views.index_view, name='homepage'),
     path('signup/', views.signup_view, name="signup"),
     path('userprofile/', views.userprofile_view, name="profile"),
+    path('userdetail/<int:user_id>/', views.userdetails_view, name="user_details"),
+    path('follow/<int:user_id>/', views.follow_view, name='follow'),
+    path('unfollow/<int:user_id>/', views.unfollow_view, name='unfollow'),
 ]
