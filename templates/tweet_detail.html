@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+        <a href="/tweet_detail/{{ tweet.id }}/"><h4>{{ tweet.tweet }}</h4></a>
+        <p><a href="/userdetail/{{tweet.author.id}}/">{{tweet.author}}</a></p>
+        <p>{{ tweet.timestamp }}</p>
+        <button class="btn btn-sm btn-primary">Follow</button>
+
+
+{% endblock %}

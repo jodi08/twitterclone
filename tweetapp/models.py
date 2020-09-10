@@ -1,12 +1,21 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.utils.timezone import now
+from twitteruserapp.models import CustomUser
+
 
 # Create your models here.
-class TwitterUser(AbstractUser):
-    pass
-
 class Tweet(models.Model):
-    pass
+    tweet = models.CharField(max_length=140)
+    timestamp = models.DateTimeField(default=now, editable=False)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
-class Notifications(models.Model):
-    pass
+    class Meta:
+        ordering = ['-timestamp']
+    
+
+    def __str__(self):
+        return self.tweet
+    
+    
+
+
