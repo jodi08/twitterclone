@@ -19,6 +19,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    path('tweet/', views.tweet_view, name='tweet'),
-    path('tweet_detail/<int:tweet_id>/', views.tweet_detail),
+    path('tweet/', views.TweetFormView.as_view(), name='tweet'),
+    path('tweet_detail/<int:tweet_id>/', views.TweetDetail.as_view()),
 ]

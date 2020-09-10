@@ -6,7 +6,7 @@ from twitteruserapp.forms import  CustomUserCreationForm
 from django.contrib.auth import login
 from tweetapp.models import Tweet
 from notificationapp.models import Notification
-
+from django.views.generic import TemplateView
 
 
 # Create your views here.
@@ -18,17 +18,37 @@ def index_view(request):
     notification_count = Notification.objects.filter(receiver=request.user, notification_flag=False).count()
     return render(request, "index.html", {'tweets': tweets, "tweet_count": tweet_count, "following": following, 'notification_count': notification_count})
 
-def signup_view(request):
-    if request.method == "POST":
+# def signup_view(request):
+#     if request.method == "POST":
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             new_user = CustomUser.objects.create_user(username=data.get("username"), password=data.get("password"), displayname = data.get("displayname"))
+#             login(request, new_user)
+#             return HttpResponseRedirect(reverse("homepage"))
+
+#     form = CustomUserCreationForm()
+#     return render(request, 'signup.html', {"form": form})
+
+class SignUpView(TemplateView):
+
+    def get(self, request):
+        form = CustomUserCreationForm()
+        return render(request, 'signup.html', {"form": form})
+    
+    def post(self, request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             new_user = CustomUser.objects.create_user(username=data.get("username"), password=data.get("password"), displayname = data.get("displayname"))
             login(request, new_user)
-            return HttpResponseRedirect(reverse("homepage"))
+        else:
+            return render(request, 'signup.html', {"form": form})
+        return HttpResponseRedirect(reverse("homepage"))
 
-    form = CustomUserCreationForm()
-    return render(request, 'signup.html', {"form": form})
+
+
+
 
 def userprofile_view(request):
     user_profile = request.user
